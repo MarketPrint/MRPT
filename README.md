@@ -29,15 +29,8 @@ The asset does not.
 
 <!-- MARKETPRINT:LIVE:START -->
 
-**Waiting for the first sync.**
-
-Add `MARKET_PRINT_TOKEN_ADDRESS` and `DEPLOY_BLOCK` under **Settings → Secrets and variables → Actions → Variables → Repository variables**, then run **Actions → Sync Market Print → Run workflow**. No on-chain state has been published yet.
 
 <!-- MARKETPRINT:LIVE:END -->
-
-Nothing in this section is written by hand.
-
-It is replaced on every sync with what the contract actually held.
 
 ---
 

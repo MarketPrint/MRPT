@@ -125,6 +125,8 @@ export async function run(reconstruct: boolean): Promise<void> {
       if (print.totalWeight !== null && totalWeight.toString() !== print.totalWeight) problems.push('totalWeight differs');
       if (print.acquired !== null && acquired.toString() !== print.acquired) problems.push('acquired amount differs');
 
+      // OPEN reserves are not reconstructed from FeeReceived events. Read the pinned state.
+      if (status === 'OPEN') print.reserveEth = reserveEth.toString();
       print.closedAt = safeNumber(closedAt) || null;
       print.finalizedAt = safeNumber(finalizedAt) || null;
 

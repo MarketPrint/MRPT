@@ -88,6 +88,12 @@ export function liveReadme(root: string): string {
     lines.push('', 'No PRINT has finalized yet.');
   }
 
+  const pendingPath = join(root, 'live/pending.json');
+  if (existsSync(pendingPath)) {
+    const pending = json<Array<{ printId: number; asset: string | null }>>(pendingPath);
+    if (pending.length) lines.push('', '**Awaiting conversion:** ' + pending.map(p => `#${printName(p.printId)} (${p.asset ?? '—'})`).join(', '), '', '[Pending PRINTs](live/pending.json)');
+  }
+
   // ── the engine ───────────────────────────────────────────────────────────────────────────────
   lines.push('', '```');
   lines.push(`FINALIZED PRINTS     ${status.finalizedPrints}`);

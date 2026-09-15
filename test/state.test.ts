@@ -47,8 +47,16 @@ test('rejects an out-of-order PRINT', () => {
   assert.throws(() => apply([opened(1, 10), ...full(1, 11), opened(3, 14)]), /out of order/);
 });
 
-test('rejects opening a PRINT before the previous finalizes', () => {
-  assert.throws(() => apply([opened(1, 10), closed(1, 11), opened(2, 12)]), /opened while #1 is CLOSED/);
+test('opens the successor at close and finalizes older PRINTs out of order', () => {
+  const tape = apply([opened(1, 10), closed(1, 11), opened(2, 11), closed(2, 12), opened(3, 12),
+    converting(2, 13), finalizedEvent(2, 14), converting(1, 15), finalizedEvent(1, 16)]);
+  assert.equal(tape.currentPrintId, 3);
+  assert.equal(tape.current!.status, 'OPEN');
+  assert.deepEqual(tape.finalized.map(p => p.printId), [1, 2]);
+});
+
+test('rejects opening a PRINT before the previous closes', () => {
+  assert.throws(() => apply([opened(1, 10), opened(2, 12)]), /opened while #1 is OPEN/);
 });
 
 test('rejects an illegal state transition', () => {

@@ -117,7 +117,8 @@ export function publish(root: string, p: Publication): void {
       writePrint(join(stage, 'prints'), print, p.eventsByPrint.get(print.printId) ?? [], p.config);
     }
 
-    const current = p.prints.find(x => x.status !== 'FINALIZED') ?? null;
+    const current = p.prints.at(-1) ?? null;
+    writeJson(join(stage, 'live/pending.json'), p.prints.filter(x => x.status === 'CLOSED' || x.status === 'CONVERTING'));
     const finalized = p.prints.filter(x => x.status === 'FINALIZED');
     const latest = finalized.at(-1) ?? null;
 

@@ -4,7 +4,7 @@ import { mkdtempSync, rmSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { verifyLocal } from '../src/verify.ts';
-import { writePrint, writeJson, printDirectories, json } from '../src/storage.ts';
+import { writePrint, writeJson, printDirectories, json, publish } from '../src/storage.ts';
 import type { PrintRecord } from '../src/state.ts';
 import type { Config } from '../src/config.ts';
 
@@ -90,5 +90,27 @@ test('catches a missing record file', () => {
   try {
     rmSync(join(root, 'prints', '000001', 'receipt.json'));
     assert.match(verifyLocal(root).map(p => p.message).join('|'), /missing receipt.json/);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+
+test('publishes the open PRINT and preserves gaps backed by pending conversions', () => {
+  const root = sandbox([]);
+  try {
+    const pending = record(1, { status: 'CLOSED', acquired: null, finalizedBlock: null,
+      finalizedTx: null, finalizedAt: null, verification: 'PENDING' });
+    const current = record(3, { status: 'OPEN', closedAt: null, acquired: null, finalizedBlock: null,
+      finalizedTx: null, finalizedAt: null, asset: null, assetAddress: null, assetIndex: null,
+      verification: 'PENDING', reserveEth: '123' });
+    publish(root, { config: CONFIG, prints: [pending, record(2), current], eventsByPrint: new Map(),
+      block: 150, blockHash: TX(150), rebuild: true, engineStatus: 'SYNCED' });
+    assert.equal(json<Record<string, unknown>>(join(root, 'live/current.json'))['printId'], 3);
+    assert.equal(json<Record<string, unknown>>(join(root, 'live/current.json'))['rewardReserveWei'], '123');
+    assert.deepEqual(json<Array<{ printId: number }>>(join(root, 'live/pending.json')).map(p => p.printId), [1]);
+    assert.deepEqual(printDirectories(join(root, 'prints')), ['000002']);
+    assert.deepEqual(verifyLocal(root), []);
+    // Missing pending metadata must not turn an incomplete history into a verified one.
+    writeJson(join(root, 'live/pending.json'), []);
+    assert.match(verifyLocal(root).map(p => p.message).join('|'), /out of sequence/);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });

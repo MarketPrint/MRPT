@@ -25,8 +25,22 @@ export function verifyLocal(root = ROOT): Problem[] {
   const problems: Problem[] = [];
   const directories = printDirectories(join(root, 'prints'));
   const seen = new Set<number>();
+  const pendingPath = join(root, 'live/pending.json');
+  const pendingRecords = existsSync(pendingPath) ? json<Array<{ printId: number; status: string }>>(pendingPath) : [];
+  const pendingIds = new Set<number>();
+  for (const record of pendingRecords) {
+    if (!Number.isSafeInteger(record.printId) || record.printId < 1
+      || !['CLOSED', 'CONVERTING'].includes(record.status) || pendingIds.has(record.printId)) {
+      problems.push({ printId: record.printId, message: 'invalid or duplicate pending PRINT' });
+    }
+    pendingIds.add(record.printId);
+  }
+  const allIds = [...directories.map(Number), ...pendingIds].sort((a, b) => a - b);
+  allIds.forEach((id, index) => {
+    if (id !== index + 1) problems.push({ printId: id, message: `out of sequence; expected #${index + 1}` });
+  });
 
-  directories.forEach((directory, position) => {
+  directories.forEach((directory) => {
     const base = join(root, 'prints', directory);
     const add = (message: string, id = Number(directory)): void => { problems.push({ printId: id, message }); };
 
@@ -42,8 +56,7 @@ export function verifyLocal(root = ROOT): Problem[] {
     if (session.printId !== receipt.printId || selection.printId !== receipt.printId) add('printId differs across records');
     if (seen.has(receipt.printId)) add('duplicate PRINT');
     seen.add(receipt.printId);
-    // History must be a gapless 1..N run.
-    if (receipt.printId !== position + 1) add(`out of sequence; expected #${position + 1}`);
+    // Gaps in finalized receipts are allowed only when backed by a pending PRINT.
 
     // Selected asset is only NVDA / SPY / AAPL / GOOGL.
     if (!ASSET_NAMES.includes(selection.selectedAsset as never)) add(`asset ${selection.selectedAsset} outside the universe`);

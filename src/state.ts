@@ -29,8 +29,7 @@ export function requireEqual(actual: unknown, expected: unknown, message: string
   if (a !== b) throw new Error(`${message}\n  expected: ${b}\n  actual:   ${a}`);
 }
 
-/// The only legal forward moves. FINALIZED is terminal for a given print; the successor opens
-/// in the same transaction, which is why PrintFinalized is always followed by PrintOpened(id+1).
+/// Each PRINT progresses independently. Its successor opens at close, before conversion.
 const NEXT: Record<PrintStatus, PrintStatus | null> = {
   OPEN: 'CLOSED', CLOSED: 'CONVERTING', CONVERTING: 'FINALIZED', FINALIZED: null,
 };
@@ -48,7 +47,7 @@ export class Tape {
         throw new Error(`PRINT #${event.printId} opened out of order; expected #${this.currentPrintId + 1}`);
       }
       const previous = this.prints.get(event.printId - 1);
-      if (previous && previous.status !== 'FINALIZED') {
+      if (previous && previous.status === 'OPEN') {
         throw new Error(`PRINT #${event.printId} opened while #${previous.printId} is ${previous.status}`);
       }
       this.prints.set(event.printId, {

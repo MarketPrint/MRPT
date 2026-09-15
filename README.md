@@ -40,15 +40,15 @@ Market Print runs in repeating cycles.
 
 Trading activity builds the reward reserve.
 
-The session closes.
+The session closes and the next session opens immediately.
 
-One asset is selected.
+One asset is selected for the closed session.
 
 The reserve is converted.
 
 The PRINT becomes claimable.
 
-Then the machine starts again.
+Trading continues while older PRINTs await conversion. Each PRINT keeps its own reserve.
 
 ---
 
@@ -149,4 +149,6 @@ The process does not.
 
 FOUR POSSIBLE OUTPUTS.
 
-ONE PRINT AT A TIME.
+ONE OPEN PRINT.
+
+OLDER PRINTS CAN AWAIT CONVERSION.

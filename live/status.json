@@ -1,0 +1,4 @@
+{
+  "status": "UNCONFIGURED",
+  "note": "Set the MARKET_PRINT_TOKEN_ADDRESS and DEPLOY_BLOCK Repository variables, then run the Sync Market Print workflow."
+}

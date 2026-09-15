@@ -1,0 +1,42 @@
+name: Sync Market Print
+on:
+  workflow_dispatch:
+  schedule:
+    # Four PRINTs a day at most (PRINT_DURATION is 6h), so a half-hourly tick is ample.
+    - cron: '*/30 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: marketprint-tape
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: npm run check
+      - run: npm test
+      - name: Read Ethereum through public RPC and update the tape
+        env:
+          MARKET_PRINT_TOKEN_ADDRESS: ${{ vars.MARKET_PRINT_TOKEN_ADDRESS }}
+          DEPLOY_BLOCK: ${{ vars.DEPLOY_BLOCK }}
+        run: npm run sync
+      - name: Verify stored records
+        run: npm run verify
+      - name: Commit tape changes
+        shell: bash
+        run: |
+          git add -- live prints README.md
+          if git diff --cached --quiet; then
+            echo 'No tape changes.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Market Tape: sync through finalized Ethereum state"
+          git push

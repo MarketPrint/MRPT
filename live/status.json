@@ -1,4 +1,12 @@
 {
-  "status": "UNCONFIGURED",
-  "note": "Set the MARKET_PRINT_TOKEN_ADDRESS and DEPLOY_BLOCK Repository variables, then run the Sync Market Print workflow."
+  "schemaVersion": 1,
+  "chainId": 1,
+  "tokenAddress": "0xe3004E6b1782120D434DA18b7C6575a06Cd0a607",
+  "deployBlock": 25992538,
+  "lastVerifiedBlock": 25992541,
+  "lastVerifiedBlockHash": "0xa30ab581691182cc80cbea2e1e14e3b8f0af9aeea1883cd3e2dde7fbedfa440c",
+  "currentPrintId": 1,
+  "finalizedPrints": 0,
+  "engineStatus": "SYNCED",
+  "updatedAt": "2026-09-16T21:08:31.088Z"
 }

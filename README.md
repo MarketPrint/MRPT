@@ -40,15 +40,15 @@ No PRINT has finalized yet.
 
 ```
 FINALIZED PRINTS     0
-LAST VERIFIED BLOCK  25994201
+LAST VERIFIED BLOCK  25994329
 ENGINE STATUS        SYNCED
 ```
 
-Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [25994201](https://etherscan.io/block/25994201)
+Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [25994329](https://etherscan.io/block/25994329)
 
 [Current](live/current.json) · [Latest](live/latest.json) · [Status](live/status.json) · [All PRINTs](prints/)
 
-*Read from finalized Ethereum state through public RPC. Updated 2026-09-17T02:39:45.556Z.*
+*Read from finalized Ethereum state through public RPC. Updated 2026-09-17T03:08:30.255Z.*
 
 <!-- MARKETPRINT:LIVE:END -->
 

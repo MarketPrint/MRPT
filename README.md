@@ -30,25 +30,38 @@ The asset does not.
 <!-- MARKETPRINT:LIVE:START -->
 
 ```
-CURRENT PRINT        #000001
-RESERVE              0.854246671950587494 ETH
+CURRENT PRINT        #000002
+RESERVE              0 ETH
 
 [OPEN]        -> CLOSED        -> CONVERTING    -> FINALIZED
 ```
 
-No PRINT has finalized yet.
+### LAST PRINT — #000001
 
 ```
-FINALIZED PRINTS     0
-LAST VERIFIED BLOCK  25994329
+  >  NVDA
+     SPY
+     AAPL
+     GOOGL
+
+RESERVE              0.854246671950587494 ETH
+ACQUIRED             9 370 016 513 551 305 312
+VERIFICATION         VERIFIED
+```
+
+Selected asset [`0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee`](https://etherscan.io/address/0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee) · [finalized transaction](https://etherscan.io/tx/0x0519b99ff4fb0dd0cb96e59930c6bf1d5761eff25aa83d602aad601ec788a6d9) · [receipt](prints/000001/receipt.json)
+
+```
+FINALIZED PRINTS     1
+LAST VERIFIED BLOCK  25994487
 ENGINE STATUS        SYNCED
 ```
 
-Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [25994329](https://etherscan.io/block/25994329)
+Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [25994487](https://etherscan.io/block/25994487)
 
 [Current](live/current.json) · [Latest](live/latest.json) · [Status](live/status.json) · [All PRINTs](prints/)
 
-*Read from finalized Ethereum state through public RPC. Updated 2026-09-17T03:08:30.255Z.*
+*Read from finalized Ethereum state through public RPC. Updated 2026-09-17T03:40:15.896Z.*
 
 <!-- MARKETPRINT:LIVE:END -->
 

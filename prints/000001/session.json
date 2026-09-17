@@ -1,0 +1,54 @@
+{
+  "printId": 1,
+  "status": "FINALIZED",
+  "chainId": 1,
+  "token": "0xe3004E6b1782120D434DA18b7C6575a06Cd0a607",
+  "openedAt": 1789591847,
+  "openedAtISO": "2026-09-16T20:50:47.000Z",
+  "closedAt": 1789613459,
+  "closedAtISO": "2026-09-17T02:50:59.000Z",
+  "finalizedAt": 1789613471,
+  "finalizedAtISO": "2026-09-17T02:51:11.000Z",
+  "openedBlock": 25992538,
+  "openedTx": "0x4a7e94e9fa55ae818ca672b9a087ede44961325a8d729f8611beddd672b764a3",
+  "closedBlock": 25994334,
+  "closedTx": "0xff4f96cd6c810d58cce395c5bc952c9ce5630af0923ba2aaba59acfe42fda496",
+  "events": [
+    {
+      "kind": "PrintOpened",
+      "printId": 1,
+      "openedAt": 1789591847,
+      "block": 25992538,
+      "logIndex": 610,
+      "tx": "0x4a7e94e9fa55ae818ca672b9a087ede44961325a8d729f8611beddd672b764a3"
+    },
+    {
+      "kind": "PrintClosed",
+      "printId": 1,
+      "assetIndex": 0,
+      "asset": "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee",
+      "reserveEth": "854246671950587494",
+      "totalWeight": "491106497112917044660312524",
+      "block": 25994334,
+      "logIndex": 424,
+      "tx": "0xff4f96cd6c810d58cce395c5bc952c9ce5630af0923ba2aaba59acfe42fda496"
+    },
+    {
+      "kind": "PrintConverting",
+      "printId": 1,
+      "reserveEth": "854246671950587494",
+      "block": 25994335,
+      "logIndex": 382,
+      "tx": "0x0519b99ff4fb0dd0cb96e59930c6bf1d5761eff25aa83d602aad601ec788a6d9"
+    },
+    {
+      "kind": "PrintFinalized",
+      "printId": 1,
+      "asset": "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee",
+      "acquired": "9370016513551305312",
+      "block": 25994335,
+      "logIndex": 392,
+      "tx": "0x0519b99ff4fb0dd0cb96e59930c6bf1d5761eff25aa83d602aad601ec788a6d9"
+    }
+  ]
+}

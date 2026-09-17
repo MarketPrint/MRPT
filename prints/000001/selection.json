@@ -1,0 +1,16 @@
+{
+  "printId": 1,
+  "selectedAsset": "NVDA",
+  "assetIndex": 0,
+  "assetAddress": "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee",
+  "assetUniverse": [
+    "NVDA",
+    "SPY",
+    "AAPL",
+    "GOOGL"
+  ],
+  "rewardReserveWei": "854246671950587494",
+  "totalWeight": "491106497112917044660312524",
+  "closedBlock": 25994334,
+  "closedTx": "0xff4f96cd6c810d58cce395c5bc952c9ce5630af0923ba2aaba59acfe42fda496"
+}

@@ -31,7 +31,7 @@ The asset does not.
 
 ```
 CURRENT PRINT        #000002
-RESERVE              0.004394853373249936 ETH
+RESERVE              0.004702107916332986 ETH
 
 [OPEN]        -> CLOSED        -> CONVERTING    -> FINALIZED
 ```
@@ -53,15 +53,15 @@ Selected asset [`0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee`](https://etherscan.
 
 ```
 FINALIZED PRINTS     1
-LAST VERIFIED BLOCK  25996148
+LAST VERIFIED BLOCK  25996308
 ENGINE STATUS        SYNCED
 ```
 
-Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [25996148](https://etherscan.io/block/25996148)
+Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [25996308](https://etherscan.io/block/25996308)
 
 [Current](live/current.json) · [Latest](live/latest.json) · [Status](live/status.json) · [All PRINTs](prints/)
 
-*Read from finalized Ethereum state through public RPC. Updated 2026-09-17T09:08:39.508Z.*
+*Read from finalized Ethereum state through public RPC. Updated 2026-09-17T09:40:09.082Z.*
 
 <!-- MARKETPRINT:LIVE:END -->
 

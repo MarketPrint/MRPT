@@ -3,10 +3,10 @@
   "chainId": 1,
   "tokenAddress": "0xe3004E6b1782120D434DA18b7C6575a06Cd0a607",
   "deployBlock": 25992538,
-  "lastVerifiedBlock": 26145564,
-  "lastVerifiedBlockHash": "0x71492e082e0c5ae79c6246af7c1b42ad37fc28567e2c96e1cda4d18246050099",
+  "lastVerifiedBlock": 26145724,
+  "lastVerifiedBlockHash": "0xc23ea8663abc4c10a59b7ef3711a37db2a504ef1f0b3832c4659ba122aa522cd",
   "currentPrintId": 2,
   "finalizedPrints": 1,
   "engineStatus": "SYNCED",
-  "updatedAt": "2026-10-08T06:08:41.320Z"
+  "updatedAt": "2026-10-08T06:38:44.703Z"
 }

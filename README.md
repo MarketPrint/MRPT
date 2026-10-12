@@ -53,15 +53,15 @@ Selected asset [`0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee`](https://etherscan.
 
 ```
 FINALIZED PRINTS     1
-LAST VERIFIED BLOCK  26173089
+LAST VERIFIED BLOCK  26174303
 ENGINE STATUS        SYNCED
 ```
 
-Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [26173089](https://etherscan.io/block/26173089)
+Token [`0xe3004E6b1782120D434DA18b7C6575a06Cd0a607`](https://etherscan.io/address/0xe3004E6b1782120D434DA18b7C6575a06Cd0a607) · block [26174303](https://etherscan.io/block/26174303)
 
 [Current](live/current.json) · [Latest](live/latest.json) · [Status](live/status.json) · [All PRINTs](prints/)
 
-*Read from finalized Ethereum state through public RPC. Updated 2026-10-12T01:49:13.555Z.*
+*Read from finalized Ethereum state through public RPC. Updated 2026-10-12T06:15:25.401Z.*
 
 <!-- MARKETPRINT:LIVE:END -->
 
